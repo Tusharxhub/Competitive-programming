@@ -3,20 +3,19 @@
 
 
 public class LinearSearch {
-    // Performs linear search on array a for target t
-    static int ls(int[] a, int t) {
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == t) // if current element is target
-                return i;  // return its index
-        }
-        return -1; // target not found
+    public static int search(int[] arr, int key) {
+        for (int i = 0; i < arr.length; i++)
+            if (arr[i] == key) return i;
+        return -1;
     }
 
     public static void main(String[] args) {
-        int[] a = {1,2,3,4,5,6,7,8,9,10}; // input array
-        System.out.println(ls(a, 5));     // search for 5, expect index 4
+        int[] nums = {10, 23, 45, 70, 11, 15};
+        int res = search(nums, 70);
+        System.out.println(res == -1 ? "Not found" : "Found at index: " + res);
     }
 }
+
 
 // ? output
 // ? 4
