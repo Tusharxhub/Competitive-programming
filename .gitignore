@@ -1,0 +1,50 @@
+# Ignore Java class files
+*.class
+
+# Ignore Windows executables
+*.exe
+
+# Common compiled objects / binaries
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+
+# Ignore build / dist directories
+/bin/
+/build/
+/dist/
+/out/
+/target/
+
+# IDE / editor specific
+.classpath
+.project
+.settings/
+.vscode/
+.idea/
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc
+
+# C++ build artifacts
+*.pch
+*.pdb
+*.ilk
+
+# Logs
+*.log
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.7z
+

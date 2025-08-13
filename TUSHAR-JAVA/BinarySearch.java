@@ -24,3 +24,9 @@ public class BinarySearch {
         System.out.println(bs(a, 5));     // search for 5, expect index 4
     }
 }
+
+
+
+
+// ? output
+// ? 
