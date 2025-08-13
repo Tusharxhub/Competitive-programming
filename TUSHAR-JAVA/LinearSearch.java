@@ -18,7 +18,7 @@ public class LinearSearch {
 
 
 // ? output
-// ? 4
+// ? Found at index: 3
 
 // ?    Time complexity: Best case: O(1) (found at first check)
 // ?    Average case: O(n)
