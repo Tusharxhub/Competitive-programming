@@ -3,25 +3,23 @@
 
 
 public class BinarySearch {
-    // Performs iterative binary search on sorted array a for target t
-    static int bs(int[] a, int t) {
-        int l = 0;                 // left boundary (inclusive)
-        int r = a.length - 1;      // right boundary (inclusive)
-        while (l <= r) {           // continue while search space is not empty
-            int m = (l + r) >>> 1; // mid index (unsigned shift avoids overflow)
-            if (a[m] == t)         // if middle element is target
-                return m;          // return its index
-            if (a[m] < t)          // if middle element less than target
-                l = m + 1;         // discard left half including m
-            else
-                r = m - 1;         // discard right half including m
+    static int search(int[] arr, int key) {
+        int l = 0, r = arr.length - 1;           // Step 1: Set left and right boundaries
+        while (l <= r) {                         // Step 2: Repeat until search space empty
+            int m = (l + r) >>> 1;               // Step 3: Find mid index
+            if (arr[m] == key) return m;         // Step 4: If match, return index
+            if (arr[m] < key) l = m + 1;         // Step 5: Search right half
+            else r = m - 1;                      // Step 6: Search left half
         }
-        return -1;                 // target not found
+        return -1;                               // Step 7: Not found
     }
 
     public static void main(String[] args) {
-        int[] a = {1,2,3,4,5,6,7,8,9,10}; // sorted input array
-        System.out.println(bs(a, 5));     // search for 5, expect index 4
+        int[] nums = {1,2,3,4,5,6,7,8,9,10};     // Step 0: Sorted array
+        int res = search(nums, 5);               // Step 8: Call search method
+        System.out.println(res == -1             // Step 9: Print result
+            ? "Not found"
+            : "Found at index: " + res);
     }
 }
 
@@ -29,7 +27,7 @@ public class BinarySearch {
 
 
 // ? output
-// ? 
+// ? Found at index: 4
 
 
 
