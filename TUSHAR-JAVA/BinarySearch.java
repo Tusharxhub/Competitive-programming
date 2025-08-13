@@ -30,3 +30,19 @@ public class BinarySearch {
 
 // ? output
 // ? 
+
+
+
+
+
+
+
+//?     Time complexity: Best case: 
+// ?    Best case: O(1) (found at first check)
+//?    Average case: O(log n)
+//?    Worst case: O(log n)
+
+
+//?    Space complexity: O(1)
+//?    Iterative: O(1) (no extra space)
+//?    Recursive: O(log n) (due to call stack)
