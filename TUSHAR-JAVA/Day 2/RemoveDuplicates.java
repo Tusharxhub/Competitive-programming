@@ -25,3 +25,12 @@ public class RemoveDuplicates {
         }
     }
     }
+
+
+
+
+//? output
+//? Array after removing duplicates:
+//? 1 2 3 4 5
+
+
