@@ -1,5 +1,4 @@
-// Given an integer array nums, return all unique triplets [nums[i], nums[j], nums[k]] such that
-// i != j, i != k, j != k and nums[i] + nums[j] + nums[k] == 0.
+//!  Given an integer array nums, return all unique triplets [nums[i], nums[j], nums[k]] such that  i != j, i != k, j != k and nums[i] + nums[j] + nums[k] == 0.
 import java.util.*;
 
 public class ThreeSum {
