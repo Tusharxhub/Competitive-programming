@@ -16,9 +16,9 @@
 
 //! Constraints: 
 
-// 1 <= s.length <= 1000 
+//! 1 <= s.length <= 1000 
 
-// s consist of only digits and English letters. 
+//! s consist of only digits and English letters. 
 
 class Solution {
     // Quick manual run helper:
