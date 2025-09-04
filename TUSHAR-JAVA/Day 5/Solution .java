@@ -7,63 +7,60 @@
 //! Approach used: Expand Around Center (O(n^2) time, O(1) extra space), which is
 //! sufficient for n <= 1000. For every index we expand for both odd and even centers.
 
-import java.util.*;
+class Solution {
+    /**
+     * Finds the longest palindromic substring in s.
+     *
+     * @param s The input string.
+     * @return The longest palindromic substring.
+     */
+    public String longestPalindrome(String s) {
+        // Handle edge cases: null or empty string
+        if (s == null || s.length() < 1) {
+            return "";
+        }
 
-class Solution { // non-public so file name can stay 1.java
-	public static String longestPalindrome(String s) {
-		if (s == null || s.length() < 2) return s == null ? "" : s;
-		int start = 0, end = 0; // inclusive bounds of best palindrome
-		for (int i = 0; i < s.length(); i++) {
-			int len1 = expand(s, i, i);     // odd length
-			int len2 = expand(s, i, i + 1); // even length
-			int len = Math.max(len1, len2);
-			if (len > end - start + 1) {
-				// Compute new bounds
-				int newStart = i - (len - 1) / 2;
-				int newEnd = i + len / 2;
-				start = newStart;
-				end = newEnd;
-			}
-		}
-		return s.substring(start, end + 1);
-	}
+        int start = 0;
+        int end = 0;
 
-	private static int expand(String s, int l, int r) {
-		while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) { l--; r++; }
-		return r - l - 1; // length after overshoot
-	}
+        for (int i = 0; i < s.length(); i++) {
+            // Case 1: Odd-length palindrome (center is s.charAt(i))
+            // e.g., "racecar"
+            int len1 = expandAroundCenter(s, i, i);
 
-	// Optional faster solution (Manacher) could be added if needed; omitted for brevity.
+            // Case 2: Even-length palindrome (center is between i and i+1)
+            // e.g., "noon"
+            int len2 = expandAroundCenter(s, i, i + 1);
 
-	public static void main(String[] args) {
-		String input;
-		if (args.length > 0) {
-			input = args[0];
-		} else {
-			try (Scanner sc = new Scanner(System.in)) {
-				if (!sc.hasNextLine()) return;
-				input = sc.nextLine().trim();
-			}
-		}
-		System.out.println(longestPalindrome(input));
-	}
-}
+            // Find the maximum length from the two cases
+            int len = Math.max(len1, len2);
 
-// Simple inline tests (run only if executed directly without args and with no stdin data)
-// You can comment this block out in production.
-@SuppressWarnings("unused")
-class _LongestPalindromeTestHarness {
-	public static void main(String[] args) {
-		Map<String, String> cases = new LinkedHashMap<>();
-		cases.put("babad", "bab"); // or aba
-		cases.put("cbbd", "bb");
-		cases.put("a", "a");
-		cases.put("ac", "a"); // or c
-		cases.put("forgeeksskeegfor", "geeksskeeg");
-		for (var e : cases.entrySet()) {
-			String got = Solution.longestPalindrome(e.getKey());
-			boolean ok = got.equals(e.getValue()) || (e.getKey().equals("babad") && got.equals("aba")) || (e.getKey().equals("ac") && got.equals("c"));
-			System.out.println(e.getKey() + " -> " + got + (ok ? " (OK)" : " (EXPECTED: " + e.getValue() + ")"));
-		}
-	}
+            // If we found a new, longer palindrome, update our pointers
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+
+        // Return the final longest substring
+        return s.substring(start, end + 1);
+    }
+
+    /**
+     * A helper method to expand from a center and find the length of the palindrome.
+     *
+     * @param s The input string.
+     * @param left The left pointer of the center.
+     * @param right The right pointer of the center.
+     * @return The length of the palindrome found.
+     */
+    private int expandAroundCenter(String s, int left, int right) {
+        // Expand outwards as long as we are within bounds and characters match
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        // The length is the distance between the two pointers after they stop matching
+        return right - left - 1;
+    }
 }
