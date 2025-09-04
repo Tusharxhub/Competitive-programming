@@ -8,6 +8,29 @@
 //! sufficient for n <= 1000. For every index we expand for both odd and even centers.
 
 class Solution {
+    // Quick manual run helper:
+    // Usage examples:
+    //   java Solution babad
+    //   (or) echo babad | java Solution
+    // Prints the longest palindromic substring to stdout.
+    public static void main(String[] args) {
+        String input;
+        if (args.length > 0) {
+            input = args[0];
+        } else {
+            try (java.util.Scanner sc = new java.util.Scanner(System.in)) {
+                if (sc.hasNextLine()) {
+                    input = sc.nextLine().trim();
+                } else {
+                    System.out.println("");
+                    return;
+                }
+            }
+        }
+        Solution solver = new Solution();
+        System.out.println(solver.longestPalindrome(input));
+    }
+
     /**
      * Finds the longest palindromic substring in s.
      *
