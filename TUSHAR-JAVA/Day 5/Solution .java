@@ -21,11 +21,7 @@
 //! s consist of only digits and English letters. 
 
 class Solution {
-    // Quick manual run helper:
-    // Usage examples:
-    //   java Solution babad
-    //   (or) echo babad | java Solution
-    // Prints the longest palindromic substring to stdout.
+ 
     public static void main(String[] args) {
         String input;
         if (args.length > 0) {
